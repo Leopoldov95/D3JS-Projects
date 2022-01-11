@@ -1,0 +1,29 @@
+/* Resuable classes go here */
+.btn-nav {
+  padding: 10px 1rem;
+  color: steelblue;
+  background-color: #f5f5f5;
+  border: 1px solid steelblue;
+}
+
+.btn-nav:hover {
+  cursor: pointer;
+  background-color: #ececec;
+}
+
+/* D3 global classes */
+.grid {
+  opacity: 0.3;
+}
+
+.tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 0.3rem;
+  background: #797a7a;
+  color: white;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+  font-size: 0.7rem;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="global.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+    <title>D3.JS Projects</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <img
+        src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/d3js/d3js-original.svg"
+        alt="D3JS Icon"
+        class="nav-logo"
+      />
+      <ul>
+        <li class="btn-nav" id="bar-chart">Bar Chart</li>
+        <li class="btn-nav" id="line-chart">Line Chart</li>
+        <li class="btn-nav" id="scatter-plot">Scatter Plot</li>
+        <li class="btn-nav" id="tree-data">Tree Data</li>
+        <li class="btn-nav" id="map-graph">Map Graph</li>
+        <li class="btn-nav" id="interactive">Interactive Map</li>
+      </ul>
+    </nav>
+    <!-- Main Body -->
+    <main>
+      <h1 class="main-title">Graphs Created Using D3.JS</h1>
+      <div id="container">
+        <svg id="d3-container" width="960" height="500"></svg>
+      </div>
+    </main>
+
+    <script src="./js/index.js" type="module"></script>
+    <!-- D3 Charts -->
+    <script src="./js//bar chart/index.js" type="module"></script>
+    <script src="./js//line graph/index.js" type="module"></script>
+    <script src="./js//scatter Plot/index.js" type="module"></script>
+  </body>
+</html>

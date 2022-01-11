@@ -1,0 +1,334 @@
+{
+  "data": {
+    "id": "Regions"
+  },
+  "children": [
+    {
+      "data": {
+        "id": "West"
+      },
+      "children": [
+        {
+          "data": { "id": "Pacific" },
+          "children": [
+            {
+              "data": {
+                "id": "Alaska"
+              }
+            },
+            {
+              "data": {
+                "id": "California"
+              }
+            },
+            {
+              "data": {
+                "id": "Hawaii"
+              }
+            },
+            {
+              "data": {
+                "id": "Oregon"
+              }
+            },
+            {
+              "data": {
+                "id": "Washington"
+              }
+            }
+          ]
+        },
+        {
+          "data": { "id": "Mountain" },
+          "children": [
+            {
+              "data": {
+                "id": "Arizona"
+              }
+            },
+            {
+              "data": {
+                "id": "Colorado"
+              }
+            },
+            {
+              "data": {
+                "id": "Idaho"
+              }
+            },
+            {
+              "data": {
+                "id": "Montana"
+              }
+            },
+            {
+              "data": {
+                "id": "New Mexico"
+              }
+            },
+            {
+              "data": {
+                "id": "Nevada"
+              }
+            },
+            {
+              "data": {
+                "id": "Utah"
+              }
+            },
+            {
+              "data": {
+                "id": "Wyoming"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data": {
+        "id": "South"
+      },
+      "children": [
+        {
+          "data": { "id": "East South Central" },
+          "children": [
+            {
+              "data": {
+                "id": "Alabama"
+              }
+            },
+            {
+              "data": {
+                "id": "Kentucky"
+              }
+            },
+            {
+              "data": {
+                "id": "Mississippi"
+              }
+            },
+            {
+              "data": {
+                "id": "Tennessee"
+              }
+            }
+          ]
+        },
+        {
+          "data": { "id": "West South Central" },
+          "children": [
+            {
+              "data": {
+                "id": "Arkansas"
+              }
+            },
+            {
+              "data": {
+                "id": "Louisiana"
+              }
+            },
+            {
+              "data": {
+                "id": "Oklahoma"
+              }
+            },
+            {
+              "data": {
+                "id": "Texas"
+              }
+            }
+          ]
+        },
+        {
+          "data": { "id": "South Atlantic" },
+          "children": [
+            {
+              "data": {
+                "id": "District of Columbia"
+              }
+            },
+            {
+              "data": {
+                "id": "Delaware"
+              }
+            },
+            {
+              "data": {
+                "id": "Florida"
+              }
+            },
+            {
+              "data": {
+                "id": "Georgia"
+              }
+            },
+            {
+              "data": {
+                "id": "Maryland"
+              }
+            },
+            {
+              "data": {
+                "id": "North Carolina"
+              }
+            },
+            {
+              "data": {
+                "id": "South Carolina"
+              }
+            },
+            {
+              "data": {
+                "id": "Virginia"
+              }
+            },
+            {
+              "data": {
+                "id": "West Virginia"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data": {
+        "id": "Midwest"
+      },
+      "children": [
+        {
+          "data": { "id": "West North Central" },
+          "children": [
+            {
+              "data": {
+                "id": "Iowa"
+              }
+            },
+            {
+              "data": {
+                "id": "Kansas"
+              }
+            },
+            {
+              "data": {
+                "id": "Minnesota"
+              }
+            },
+            {
+              "data": {
+                "id": "Missouri"
+              }
+            },
+            {
+              "data": {
+                "id": "North Dakota"
+              }
+            },
+            {
+              "data": {
+                "id": "Nebraska"
+              }
+            },
+            {
+              "data": {
+                "id": "South Dakota"
+              }
+            }
+          ]
+        },
+        {
+          "data": { "id": "East North Central" },
+          "children": [
+            {
+              "data": {
+                "id": "Illinois"
+              }
+            },
+            {
+              "data": {
+                "id": "Indiana"
+              }
+            },
+            {
+              "data": {
+                "id": "Michigan"
+              }
+            },
+            {
+              "data": {
+                "id": "Ohio"
+              }
+            },
+            {
+              "data": {
+                "id": "Wisconsin"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "data": {
+        "id": "Northeast"
+      },
+      "children": [
+        {
+          "data": {
+            "id": "New England"
+          },
+          "children": [
+            {
+              "data": {
+                "id": "Massachusetts"
+              }
+            },
+            {
+              "data": {
+                "id": "Maine"
+              }
+            },
+            {
+              "data": {
+                "id": "New Hampshire"
+              }
+            },
+            {
+              "data": {
+                "id": "Rhode Island"
+              }
+            },
+            {
+              "data": {
+                "id": "Vermont"
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "id": "Middle Atlantic"
+          },
+          "children": [
+            {
+              "data": {
+                "id": "New Jersey"
+              }
+            },
+            {
+              "data": {
+                "id": "New York"
+              }
+            },
+            {
+              "data": {
+                "id": "Pennsylvania"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
