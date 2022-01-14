@@ -6,6 +6,7 @@ import { renderLineGraph } from "./line graph/index.js";
 import { renderScatterGraph } from "./scatter Plot/index.js";
 import { renderTreeChart } from "./tree chart/index.js";
 import { renderUSMap } from "./simple map/index.js";
+import { renderCovidMap } from "./covid map/index.js";
 export const renderBarGraphData = () => {
   // parses csv file into js array
   csv("/js/bar chart/state_population.csv").then((data) => {
@@ -77,5 +78,64 @@ export const renderSimpleMapData = () => {
     });
     console.log(states);
     renderUSMap(states);
+  });
+};
+
+export const rendercovidMapData = () => {
+  Promise.all([
+    json("https://unpkg.com/visionscarto-world-atlas@0.0.4/world/50m.json"),
+    csv("/js/covid map/time_series_covid19_confirmed_global_iso3_regions.csv"),
+    csv("/js/covid map/iso_3_codes.csv"),
+  ]).then(([topoJSONdata, covidCSV, isoCSV]) => {
+    // huge data set, want data only for 2021
+    // create new array with covide data that contains iso id and ONLY data for 2020
+    let filteredCovidData = [];
+    covidCSV.forEach((d) => {
+      let newObj = {};
+      newObj.dates = {};
+      newObj["ISO 3166-1 Alpha 3-Codes"] = d["ISO 3166-1 Alpha 3-Codes"];
+      Object.keys(d).forEach((key) => {
+        // need better method to detect year
+        if (new Date(key).getFullYear() === 2021) {
+          newObj.dates[key] = d[key];
+          newObj["Country/Region"] = d["Country/Region"];
+        }
+      });
+      filteredCovidData.push(newObj);
+    });
+
+    const findIsoId = (id) => {
+      for (let d of isoCSV) {
+        if (d["Alpha-3 code"] === id) {
+          return d["Numeric code"];
+        }
+      }
+    };
+    // attaching iso id info to covid dataset
+    filteredCovidData.forEach((d) => {
+      d.iso_id = findIsoId(d["ISO 3166-1 Alpha 3-Codes"]);
+    });
+
+    // concerts object rows into the iso id name/code
+    const rowById = filteredCovidData.reduce((accumulator, d) => {
+      accumulator[d["iso_id"]] = d;
+      return accumulator;
+    }, {});
+
+    const countries = feature(topoJSONdata, topoJSONdata.objects.countries);
+    countries.features.forEach((d) => {
+      Object.assign(d.properties, rowById[+d.id]); // parse into number
+    });
+
+    const featuresWithCovidData = countries.features.filter(
+      (d) => Object.keys(d.properties).length > 0
+    );
+    // we will handle number parsing on the index.js
+
+    // what we need from this dataset;
+    // country_iso_3_digit_code
+    // 2020 covid info
+    // toposjson map data
+    renderCovidMap({ features: countries.features, featuresWithCovidData });
   });
 };
