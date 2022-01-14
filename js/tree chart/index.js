@@ -1,10 +1,8 @@
 const { select, tree, hierarchy, linkHorizontal, zoom } = d3;
-const svg = select(`svg`);
-
-const width = +svg.attr("width");
-const height = +svg.attr("height");
-
-const margin = { top: 0, left: 75, right: 50, bottom: 0 };
+const width = 960;
+const height = 500;
+const svg = select("svg").attr("height", height).attr("width", width);
+const margin = { top: 0, left: 100, right: 100, bottom: 0 };
 const innerWidth = width - margin.left - margin.right;
 const innerHeight = height - margin.top - margin.bottom;
 

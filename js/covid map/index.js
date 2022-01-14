@@ -11,48 +11,42 @@ const {
 
 import { sizeLegend } from "./sizeLegend.js";
 import { dateSlider } from "./dateSlider.js";
-import { rendercovidMapData } from "../loader.js";
-const svg = select(`svg`);
-const mainTitle = select(".main-title");
+
 const sliderContainer = select(".slider-container");
 
 const projection = geoNaturalEarth1(); // chooses the setting on how to prject the world map data
 const pathGenerator = geoPath().projection(projection); // projects the sleected projection setting
 
 export const renderCovidMap = (loadedData) => {
-  console.log(mainTitle);
-  console.log(loadedData);
+  const width = 960;
+  const height = 550;
+  let svg;
+  let g;
+  svg = select("svg").attr("height", height).attr("width", width);
+  g = svg.append("g").attr("transform", "translate(0, 40)");
   // STATE
   let data = loadedData;
-  let inputDate;
+  let inputDate = "7/1/21";
 
   // function to change date
   const onSlideChange = (selectedDate) => {
     inputDate = selectedDate;
     console.log(inputDate);
+    // hack...
+    document.querySelector("svg").innerHTML = "";
+    svg = select("svg").attr("height", height).attr("width", width);
+    g = svg.append("g").attr("transform", "translate(0, 40)");
     render();
-    //render(); // have to invoke the render function
   };
 
-  // mainTitle._groups[0][0].innerText = "COVID Interactive Map 2020 Data";
-  //mainContainer[0][0].innerText = "Covid Map";
-  const g = svg.append("g");
-  // slider appendage
-
-  /*   sliderContainer
-    .append("span")
-    .attr("class", "slider-text")
-    .text("Jan 01, 2021");
-  const slider = sliderContainer.append("input");
-  sliderContainer
-    .append("span")
-    .attr("class", "slider-text")
-    .text("Dec 31, 2021"); */
-
+  // Main render
   const render = () => {
-    mainTitle.text(
-      `COVID Interactive Map 2021 Data - ${inputDate ? inputDate : "07/1/21"}`
-    );
+    svg
+      .append("text")
+      .text(`COVID Interactive Map 2021 Data - ${inputDate}`)
+      .attr("x", width / 2)
+      .attr("text-anchor", "middle")
+      .attr("y", 20);
 
     let date = inputDate ? inputDate : "7/1/21";
     const radiusValue = (d) =>
@@ -123,9 +117,9 @@ export const renderCovidMap = (loadedData) => {
       })
       .append("text")
       .attr("class", "legend-title")
-      .text("Cases")
+      .text(`COVID Cases`)
       .attr("y", -50)
-      .attr("x", -30);
+      .attr("x", -40);
 
     sliderContainer.call(dateSlider, {
       minDate: "2021-01-02",

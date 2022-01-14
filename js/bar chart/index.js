@@ -3,16 +3,18 @@ const { max, scaleLinear, scaleBand, select, axisLeft, axisBottom, format } =
   d3; // calculates the maximum value of a data set
 //const scaleLinear = d3.scaleLinear;
 
-const svg = select("svg").attr("class", "bar-chart");
+const width = 960;
+const height = 500;
 
-const width = +svg.attr("width");
-const height = +svg.attr("height");
-
+const svg = select("svg")
+  //.attr("class", "bar-chart")
+  .attr("height", height)
+  .attr("width", width);
 export const renderGraph = (data) => {
   const yValue = (d) => d.population; // can use this to replace the repeated function
   const xValue = (d) => d.state;
   const title = "Top 10 Most Populated States 2020";
-  const margin = { top: 50, right: 20, bottom: 70, left: 100 };
+  const margin = { top: 50, right: 60, bottom: 70, left: 100 };
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
   const tickNumberFormat = (number) => format(".3s")(number).replace("G", "B");

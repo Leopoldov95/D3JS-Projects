@@ -1,16 +1,20 @@
 const { select, geoPath, max, interpolateBlues, zoom, scaleSequential } = d3;
 import { colorLegend } from "./colorLegend.js";
-const svg = select(`svg`);
+
+const width = 960;
+const height = 500;
+const margin = { top: 0, left: 0, right: 100, bottom: 0 };
+const innerWidth = width - margin.left - margin.right;
+const svg = select("svg").attr("height", height).attr("width", innerWidth);
 
 const projection = d3.geoAlbersUsa(); // chooses the setting on how to prject the world map data
 
 const pathGenerator = geoPath().projection(projection); // projects the sleected projection setting
 
 export const renderUSMap = (data) => {
-  const width = +svg.attr("width");
-  const height = +svg.attr("height");
   const title = "US Population 2019 Census";
-  const g = svg.append("g");
+  const g = svg.append("g").attr("transform", "scale(0.9)");
+
   // group container for colorScale
   const colorLegendG = svg
     .append("g")
@@ -30,13 +34,14 @@ export const renderUSMap = (data) => {
   colorLegendG.call(colorLegend, {
     dataScale: colorScale,
     height: 20,
-    width,
+    width: innerWidth,
   });
 
   g.selectAll("path")
     .data(data.features)
     .enter()
     .append("path")
+
     .attr("class", "country")
     //.attr("d", (d) => pathGenerator(d)); // same as below
     .attr("d", pathGenerator)

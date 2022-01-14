@@ -1,9 +1,8 @@
 // psuedo imports
 const { scaleLinear, extent, select, axisLeft, axisBottom, format } = d3;
-const svg = select("svg");
-
-const width = +svg.attr("width");
-const height = +svg.attr("height");
+const width = 960;
+const height = 500;
+const svg = select("svg").attr("height", height).attr("width", width);
 
 export const renderScatterGraph = (data) => {
   const title = "C02 Emission Per Person vs GDP - 2018";
@@ -13,7 +12,7 @@ export const renderScatterGraph = (data) => {
   const yAxisLabel = "Annual CO2 emissions (per capita)";
   const circleRadius = 8;
 
-  const margin = { top: 50, right: 20, bottom: 90, left: 200 };
+  const margin = { top: 50, right: 60, bottom: 90, left: 200 };
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
   const xScale = scaleLinear()

@@ -11,10 +11,9 @@ const {
   curveBasis,
 } = d3;
 
-const svg = select("svg");
-
-const width = +svg.attr("width");
-const height = +svg.attr("height");
+const width = 960;
+const height = 500;
+const svg = select("svg").attr("height", height).attr("width", width);
 
 export const renderLineGraph = (data) => {
   const title = "Historic Population of California";

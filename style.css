@@ -105,10 +105,12 @@ text.tree-text {
 
 .country:hover {
   fill: blue;
+  cursor: pointer;
 }
 
 .country-covid:hover {
   fill: red;
+  cursor: pointer;
 }
 .tick circle,
 .country-circle {
