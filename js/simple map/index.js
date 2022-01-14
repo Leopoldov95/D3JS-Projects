@@ -7,9 +7,9 @@ const margin = { top: 0, left: 0, right: 100, bottom: 0 };
 const innerWidth = width - margin.left - margin.right;
 const svg = select("svg").attr("height", height).attr("width", innerWidth);
 
-const projection = d3.geoAlbersUsa(); // chooses the setting on how to prject the world map data
+const projection = d3.geoAlbersUsa();
 
-const pathGenerator = geoPath().projection(projection); // projects the sleected projection setting
+const pathGenerator = geoPath().projection(projection);
 
 export const renderUSMap = (data) => {
   const title = "US Population 2019 Census";
@@ -30,7 +30,9 @@ export const renderUSMap = (data) => {
   const colorValue = (d) => d.properties["2019"];
 
   // defining the color scale
-  colorScale.domain([0, 40000000]).interpolator(interpolateBlues);
+  colorScale
+    .domain(d3.extent(data.features, colorValue))
+    .interpolator(interpolateBlues);
   colorLegendG.call(colorLegend, {
     dataScale: colorScale,
     height: 20,
@@ -41,9 +43,7 @@ export const renderUSMap = (data) => {
     .data(data.features)
     .enter()
     .append("path")
-
     .attr("class", "country")
-    //.attr("d", (d) => pathGenerator(d)); // same as below
     .attr("d", pathGenerator)
     .attr("fill", (d) => colorScale(colorValue(d)))
     .append("title")

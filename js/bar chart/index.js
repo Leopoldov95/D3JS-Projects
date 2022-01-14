@@ -1,20 +1,16 @@
 // psuedo imports
 const { max, scaleLinear, scaleBand, select, axisLeft, axisBottom, format } =
-  d3; // calculates the maximum value of a data set
-//const scaleLinear = d3.scaleLinear;
+  d3;
 
 const width = 960;
 const height = 500;
 
-const svg = select("svg")
-  //.attr("class", "bar-chart")
-  .attr("height", height)
-  .attr("width", width);
+const svg = select("svg").attr("height", height).attr("width", width);
 export const renderGraph = (data) => {
-  const yValue = (d) => d.population; // can use this to replace the repeated function
+  const yValue = (d) => d.population;
   const xValue = (d) => d.state;
   const title = "Top 10 Most Populated States 2020";
-  const margin = { top: 50, right: 60, bottom: 70, left: 100 };
+  const margin = { top: 50, right: 0, bottom: 70, left: 100 };
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
   const tickNumberFormat = (number) => format(".3s")(number).replace("G", "B");
@@ -24,27 +20,19 @@ export const renderGraph = (data) => {
     .attr("transform", `translate(${margin.left},${margin.top})`);
   // population y scale
   const yScale = scaleLinear()
-    .domain([0, max(data, yValue)])
+    .domain([0, max(data, yValue) + 1000000])
     .range([innerHeight, 0]);
-  // state names x scale
+
   const xScale = scaleBand()
     .domain(data.map(xValue))
     .range([0, innerWidth])
-    .padding(0.1);
+    .padding(0.2);
 
-  // to makeit neater, first create a group element for the y axis
   const yAxis = axisLeft(yScale).tickSize(-width).tickFormat(tickNumberFormat);
   const xAxis = axisBottom(xScale);
-  /*   const yAxis = axisLeft(yScale)
-  .tickSize(-innerWidth)
-  .tickFormat(tickNumberFormat)
-  .tickPadding(10);
-const yAxisG = g.append("g").call(yAxis); */
-  // append yScale to chart
+
   const yAxisG = chart.append("g").call(yAxis);
-  //yAxisG.select(".domain").remove();
-  // append xScale to chart
-  // the transformation is needed in order to make sure that the chart has the axis in the righ domentsions
+
   const xAxisG = chart
     .append("g")
     .call(xAxis)
@@ -66,7 +54,6 @@ const yAxisG = g.append("g").call(yAxis); */
     .append("text")
     .attr("class", "axis-label")
     .attr("y", -60)
-    // .attr("x", -(innerHeight / 2) - 60)
     .attr("x", -innerHeight / 2)
     .attr("fill", "black")
     .attr("transform", "rotate(-90)")

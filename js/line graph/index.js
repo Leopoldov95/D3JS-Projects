@@ -35,8 +35,6 @@ export const renderLineGraph = (data) => {
     .domain(extent(data, yValue))
     .range([innerHeight, 0])
     .nice();
-  //.padding(0.7);
-
   const g = svg
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);

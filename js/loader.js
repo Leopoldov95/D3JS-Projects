@@ -35,12 +35,7 @@ export const renderScatterGraphData = () => {
     filteredData = filteredData.filter((d) => d["GDP per capita"].length > 1);
     filteredData = filteredData.filter((d) => d.Entity !== "Qatar");
     filteredData = filteredData.filter((d) => d.Code !== "");
-    // This commments code onlye served to check the data integrity
-    /* let noGDPCounter = 0;
-    
-    console.log(noGDPCounter); */
-    // BIG data set
-    // need to filter by year
+
     filteredData.forEach((d) => {
       d["GDP per capita"] = +d["GDP per capita"];
       d["Annual CO2 emissions (per capita)"] =
@@ -130,12 +125,6 @@ export const rendercovidMapData = () => {
     const featuresWithCovidData = countries.features.filter(
       (d) => Object.keys(d.properties).length > 0
     );
-    // we will handle number parsing on the index.js
-
-    // what we need from this dataset;
-    // country_iso_3_digit_code
-    // 2020 covid info
-    // toposjson map data
     renderCovidMap({ features: countries.features, featuresWithCovidData });
   });
 };

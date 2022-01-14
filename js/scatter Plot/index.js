@@ -24,7 +24,6 @@ export const renderScatterGraph = (data) => {
     .domain(extent(data, yValue))
     .range([innerHeight, 0])
     .nice();
-  //.padding(0.7);
 
   const g = svg
     .append("g")
@@ -43,7 +42,7 @@ export const renderScatterGraph = (data) => {
     .append("text")
     .attr("class", "axis-label")
     .attr("y", -93)
-    .attr("x", -innerHeight / 2)
+    .attr("x", -innerHeight / 2 - 20)
     .attr("fill", "black")
     .attr("transform", `rotate(-90)`)
     .attr("text-anchor", "middle")
